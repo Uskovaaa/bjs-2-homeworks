@@ -20,6 +20,20 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
 
   // код для задачи №2 писать здесь
-
-  return totalAmount;
+  let credit = amount - contribution; //тело кредита
+  let currentDate = new Date(); //текущая дата
+  let countMonth = date.getMonth() - currentDate.getMonth() + (12 * (date.getFullYear() - currentDate.getFullYear())); //счётчик количества месяцев
+  let percentMonth = percent / 100 / 12; //процент за месяц делённый на 100
+  let monthlyPayment = credit * (percentMonth + (percentMonth / (((1 + percentMonth) ** countMonth) - 1))); //ежемесячный платёж
+  totalAmount = parseFloat((monthlyPayment * countMonth).toFixed(2)); //общая сумма кредита
+  
+  if (isNaN(percent)) {
+    return `Параметр "Процентная ставка" содержит неправильное значение "${percent}"`;
+  } else if (isNaN(contribution)) {
+    return `Параметр "Начальный взнос" содержит неправильное значение "${contribution}"`;
+  } else if (isNaN(amount)) {
+    return `Параметр "Общая стоимость" содержит неправильное значение "${amount}"`;
+  } else {
+    return totalAmount;
+  }  
 }
