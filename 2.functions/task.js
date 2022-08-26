@@ -40,5 +40,16 @@ function makeWork(arrOfArr, func) {
 
 // Задание 3
 function worker2(arr) {
-  // Ваш код
+  let diff = arr[0], min = arr[0], max = arr[0];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] < min ) {
+      min = arr[i];
+    }
+    if (arr[i] > max) {
+      max = arr[i]
+    }
+    diff = Math.abs(max - min);
+  }
+  return diff;
 }
