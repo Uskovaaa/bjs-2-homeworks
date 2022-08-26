@@ -19,19 +19,22 @@ function getArrayParams(arr) {
 
 // Задание 2
 function worker(arr) {
-  let sum;
+  let sum = 0;
 
-  // Ваш код
-
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
   return sum;
 }
 
 function makeWork(arrOfArr, func) {
-  let max;
-
-  // Ваш кода
-  // for ...
+  let max = arrOfArr[0][0];
   
+  for (let i = 0; i < arrOfArr.length; i++) {
+    if (func(arrOfArr[i]) > max) {
+      max = func(arrOfArr[i]);
+    }
+  }
   return max;
 }
 
