@@ -28,11 +28,12 @@ class AlarmClock {
   }
 
   getCurrentFormattedTime() {
-    let date = new Date();
-    let hours = date.getHours().toString();
-    let minutes = date.getMinutes().toString();
+    const date = new Date().toLocaleTimeString("ru-Ru", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
         
-    return `${hours}:${minutes}`
+    return date
   }
 
   checkClock(alarm) {
